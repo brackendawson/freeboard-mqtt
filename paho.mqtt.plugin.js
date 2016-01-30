@@ -95,6 +95,10 @@
 		function onConnectionLost(responseObject) {
 			if (responseObject.errorCode !== 0)
 				console.log("onConnectionLost:"+responseObject.errorMessage);
+			client.connect({onSuccess:onConnect,
+					userName: currentSettings.username,
+					password: currentSettings.password,
+					useSSL: currentSettings.use_ssl});
 		};
 
 		function onMessageArrived(message) {
