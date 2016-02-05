@@ -102,11 +102,10 @@
 		};
 
 		function onMessageArrived(message) {
-			data.topic = message.destinationName;
 			if (currentSettings.json_data) {
-				data.msg = JSON.parse(message.payloadString);
+				data[message.destinationName] = JSON.parse(message.payloadString);
 			} else {
-				data.msg = message.payloadString;
+				data[message.destinationName] = message.payloadString;
 			}
 			updateCallback(data);
 		};
